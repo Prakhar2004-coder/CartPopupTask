@@ -1,0 +1,236 @@
+/* ========== RESET & GLOBAL ========== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Colors approximated from the creative */
+:root {
+  --purple-1: #8a1db2;
+  --purple-2: #c1327f;
+  --yellow:   #ffd780;
+  --black:    #000000;
+}
+
+/* ========== OVERLAY ========== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+/* ========== POPUP CARD ========== */
+.popup-card {
+  width: 100%;
+  max-width: 960px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--purple-1) 0%, var(--purple-2) 100%);
+  color: #fff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Close button (top-right) */
+.popup-close {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  border: none;
+  background: none;
+  font-size: 1.6rem;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* ========== LAYOUT ========== */
+.popup-layout {
+  display: flex;
+  min-height: 260px;
+}
+
+/* LEFT: IMAGE SIDE */
+.popup-image {
+  flex: 0 0 42%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem 1.5rem 2rem;
+}
+
+.popup-image img {
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+}
+
+/* RIGHT: CONTENT SIDE */
+.popup-content {
+  flex: 1;
+  padding: 2.1rem 2.5rem 2.3rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ========== TYPOGRAPHY ========== */
+.eyebrow {
+  margin: 0 0 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 1.1rem;
+}
+
+.divider {
+  width: 38px;
+  height: 3px;
+  background: #fff;
+  opacity: 0.8;
+  margin-bottom: 1.3rem;
+}
+
+.small-text {
+  margin: 0 0 0.25rem;
+  font-size: 0.9rem;
+}
+
+.headline {
+  margin: 0 0 0.4rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.headline span {
+  color: var(--yellow);
+}
+
+.body-copy {
+  margin: 0 0 1.8rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* ========== VARIANTS (FORMS / BUTTONS) ========== */
+.variant {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Form inputs */
+.input {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.9rem;
+  background: #ffffff;
+  color: #222;
+}
+
+.input::placeholder {
+  color: #999;
+}
+
+/* Primary button */
+.primary-btn {
+  margin-top: 0.5rem;
+  padding: 0.9rem 1.2rem;
+  border-radius: 4px;
+  border: none;
+  background: var(--black);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.primary-btn:hover {
+  background: #222;
+  transform: translateY(-1px);
+}
+
+.primary-btn:active {
+  transform: translateY(0);
+}
+
+/* Optional % watermark like in creative */
+.popup-card::after {
+  content: "%";
+  position: absolute;
+  right: 4%;
+  bottom: -18%;
+  font-size: 14rem;
+  color: rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+}
+
+/* ========== RESPONSIVE (MOBILE STACKED) ========== */
+@media (max-width: 768px) {
+
+  .overlay {
+    padding: 1rem;
+  }
+
+  .popup-card {
+    max-width: 420px;
+    border-radius: 24px;
+  }
+
+  .popup-layout {
+    flex-direction: column;
+  }
+
+  /* Mobile mockup does not show product image, so hide it */
+  .popup-image {
+    display: none;
+  }
+
+  .popup-content {
+    padding: 1.9rem 1.6rem 2.2rem;
+  }
+
+  .eyebrow {
+    font-size: 1.05rem;
+  }
+
+  .headline {
+    font-size: 1.6rem;
+  }
+
+  .body-copy br {
+    display: none;
+  }
+
+  .primary-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+/* Desktop image */
+.popup-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+/* Hide image in mobile */
+@media (max-width: 768px) {
+  .popup-image {
+    display: none;
+  }
+}
+
